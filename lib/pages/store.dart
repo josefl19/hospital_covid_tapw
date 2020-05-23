@@ -15,14 +15,14 @@ class _StoreState extends State<Store> {
   Future _getProducts() async {
     //Inicializacion de API
     WooCommerceAPI wooCommerceAPI = WooCommerceAPI(
-      url: "https://dev-fujartestore.pantheonsite.io", 
-      consumerKey: "ck_b5e36b87949bb47c360d3efb606f1a9ea6d65895", 
-      consumerSecret: "cs_e0598359d0644833906fecb6b375bb60c3f3dbae");
+        url: "https://dev-efarmacia.pantheonsite.io",
+        consumerKey: "ck_bc2ecd768856437896ff7a657804b76052366b29",
+        consumerSecret: "cs_76161f0a6af61566169db06b0e430ba4830b865d");
 
-      var products = await wooCommerceAPI.getAsync("products");
-      return products;
+    var products = await wooCommerceAPI.getAsync("products?per_page=100");
+    return products;
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +45,14 @@ class _StoreState extends State<Store> {
                   title: Text(snapshot.data[index]["name"]),
                   subtitle:
                       Text("Buy now for \$ " + snapshot.data[index]["price"]),
+                  /*onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailScreen(todo: todos[index]),
+                      ),
+                    );
+                  },*/
                 );
               },
             );
