@@ -44,6 +44,7 @@ class CovidList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var fecha = stats[stats.length-1].date.substring(0, 10);
     /*return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -53,31 +54,40 @@ class CovidList extends StatelessWidget {
         return Text(stats[stats.length-1].confirmed.toString());
       },
     );*/
-    return ListView(
+    return Scaffold(
+      body: ListView(
         children: <Widget>[
           ListTile(
+            title: Center(child: Text("ESTADÍSTICA EN MÉXICO", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),)),
+            subtitle: Center(child: Text("ULTIMA ACTUALIZACIÓN: " + fecha, style: TextStyle(fontSize: 11),)),
+          ),
+          ListTile(
             leading: Icon(Icons.report, color: Colors.red),
-            trailing: Text(stats[stats.length-1].confirmed.toString()),
+            trailing: Text(stats[stats.length-1].confirmed.toString(), style: TextStyle(fontWeight: FontWeight.bold),),
             title: Text("CASOS CONFIRMADOS"),
           ),
           ListTile(
             leading: Icon(Icons.warning, color: Colors.orange),
-            trailing: Text(stats[stats.length-1].active.toString()),
+            trailing: Text(stats[stats.length-1].active.toString(), style: TextStyle(fontWeight: FontWeight.bold),),
             title: Text("CASOS ACTIVOS"),
           ),
           ListTile(
             leading: Icon(Icons.sentiment_very_dissatisfied, color: Colors.grey),
             //title: Text(stats[stats.length-1].deaths.toString()),
             title: Text("PERSONAS FALLECIDAS"),
-            trailing: Text(stats[stats.length-1].deaths.toString()),
+            trailing: Text(stats[stats.length-1].deaths.toString(), style: TextStyle(fontWeight: FontWeight.bold),),
           ),
           ListTile(
             leading: Icon(Icons.check_box, color: Colors.green,),
-            trailing: Text(stats[stats.length-1].recovered.toString()),
+            trailing: Text(stats[stats.length-1].recovered.toString(), style: TextStyle(fontWeight: FontWeight.bold),),
             title: Text("CASOS RECUPERADOS"),
           ),
         ],
-      );
+      ),
+      
+    );
+    
+      
   }
 }
 
