@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hospital_covid_tapw/pages/custom_card.dart';
+import 'package:hospital_covid_tapw/pages/historial_pacientes.dart';
 
 class Paciente extends StatefulWidget {
   Paciente({Key key}) : super(key: key);
@@ -10,44 +9,59 @@ class Paciente extends StatefulWidget {
 }
 
 class _PacienteState extends State<Paciente> {
+
+  TextEditingController textUser = TextEditingController();
+  TextEditingController textIdDoctor = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: StreamBuilder<QuerySnapshot>(
-            stream: Firestore.instance.collection('consultations')
-                                      .where("answerby.email", isEqualTo: "doctor@chapatin.com")
-                                      .where("status", isEqualTo: "close")
-              .snapshots(),
-            builder: (BuildContext context,
-              AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (snapshot.hasError)
-                  return new Text('Error: ${snapshot.error}');
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  default:
-                    return new ListView(
-                      children: snapshot.data.documents
-                        .map((DocumentSnapshot document) {
-                          return new CustomCard(
-                            covid: document['patient']['covid'],
-                            nacimiento: document['patient']['birthday'],
-                            paciente: document['patient']['name'],
-                            precond: document['patient']['preconditions'],
-                            prescription: document['prescription'],
-                          );
-                      }).toList(),
-                    );
-                }
-              },
-            )),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: TextField(
+              controller: textUser,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'User doctor',
+              ),
+            ),
           ),
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: TextField(
+              controller: textIdDoctor,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'ID Usuario',
+              ),
+            ),
+          ),
+
+          RaisedButton(
+            child: Text(
+              'VER HISTORIAL',
+              style: TextStyle(fontSize: 14),
+            ),
+            onPressed: () {
+              _sendDataToViewHistorial(context);
+            },
+          )
+
+        ],
+      ),
     );
   }
+
+  _sendDataToViewHistorial(BuildContext context) {
+    String user = textUser.text;
+    String idDoctor = textIdDoctor.text;
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Historial(idDoctor: idDoctor, user: user),
+        ));
+    }
 }

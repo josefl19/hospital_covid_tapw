@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-//import 'package:classroom_flutter/dashboard.dart';
 import 'package:hospital_covid_tapw/tabNavigation.dart';
 void main() {
   runApp(TabsNavigation());
