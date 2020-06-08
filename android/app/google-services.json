@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "332471423915",
+    "firebase_url": "https://efarmacia-c84b7.firebaseio.com",
+    "project_id": "efarmacia-c84b7",
+    "storage_bucket": "efarmacia-c84b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332471423915:android:a8063ad190dd03bde1b8ee",
+        "android_client_info": {
+          "package_name": "com.example.hospital_covid_tapw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332471423915-pd8jipfllplh0v0dvd7sb79jfso3pot1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBntV0AtzfcGWhxQERhfTtg7Ej7OTTVJxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332471423915-pd8jipfllplh0v0dvd7sb79jfso3pot1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
