@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hospital_covid_tapw/pages/consultas.dart';
 import 'package:hospital_covid_tapw/pages/pacientes.dart';
 import 'package:hospital_covid_tapw/pages/store.dart';
 import 'package:hospital_covid_tapw/pages/statsCOVID.dart';
@@ -10,7 +11,7 @@ class TabsNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     final _kTabPages = <Widget>[
       //Center(child: Icon(Icons.content_paste, size: 64.0, color: Colors.yellow)),
-      Center(child: Icon(Icons.content_paste, size: 64.0, color: Colors.teal)),
+      Consultas(),
       Paciente(),
       StatsCovid(),
       Store(),

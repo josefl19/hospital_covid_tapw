@@ -10,18 +10,6 @@ class Paciente extends StatefulWidget {
 }
 
 class _PacienteState extends State<Paciente> {
-  final databaseReference = Firestore.instance;
-  
-  Future _getData() async {
-    databaseReference
-        .collection("users")
-        .where("type", isEqualTo: "patient")
-        .getDocuments()
-        .then((QuerySnapshot snapshot) {
-      snapshot.documents.forEach((f) => print('${f.data}}'));
-      return snapshot;
-    });
-  }
   
   @override
   Widget build(BuildContext context) {
@@ -60,11 +48,6 @@ class _PacienteState extends State<Paciente> {
               },
             )),
           ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Add',
-        child: Icon(Icons.add),
-      ),
     );
   }
 }
